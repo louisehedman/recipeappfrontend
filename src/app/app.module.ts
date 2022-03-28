@@ -8,14 +8,16 @@ import { AppComponent } from './app.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { AuthInterceptor } from './shared/auth.interceptor';
+import { AuthInterceptor } from './services/auth.interceptor';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SigninComponent,
     SignupComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

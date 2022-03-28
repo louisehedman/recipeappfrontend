@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { TokenService } from './shared/token.service';
-import { AuthStateService } from './shared/auth-state.service';
 
 @Component({
   selector: 'app-root',
@@ -10,23 +7,8 @@ import { AuthStateService } from './shared/auth-state.service';
 })
 
 export class AppComponent implements OnInit {
-  isSignedIn!: boolean;
-  title = 'recipe-app-fe';
-  constructor(
-    private auth: AuthStateService,
-    public router: Router,
-    public token: TokenService
-  ) {}
+  constructor() { }
 
-  ngOnInit() {
-    this.auth.userAuthState.subscribe((val) => {
-      this.isSignedIn = val;
-    });
-  }
-  // Signout
-  signOut() {
-    this.auth.setAuthState(false);
-    this.token.removeToken();
-    this.router.navigate(['login']);
+  ngOnInit(): void {
   }
 }

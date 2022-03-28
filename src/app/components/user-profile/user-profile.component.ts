@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './../../shared/auth.service';
+import { AuthService } from './../../services/auth.service';
 
 // User interface
 export class User {
@@ -10,7 +10,7 @@ export class User {
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.scss'],
+  styleUrls: ['./user-profile.component.css'],
 })
 
 export class UserProfileComponent implements OnInit {
