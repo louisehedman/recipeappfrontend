@@ -6,7 +6,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { RecipeBrowseComponent } from './components/recipe-browse/recipe-browse.component'
 
 const routes: Routes = [
-  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: '', redirectTo: 'recipes', pathMatch: 'full' },
   { path: 'login', component: SigninComponent },
   { path: 'register', component: SignupComponent },
   { path: 'profile', component: UserProfileComponent },

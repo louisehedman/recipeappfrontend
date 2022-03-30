@@ -1,7 +1,16 @@
+<h1>Welcome to Recipe app U06</h1>
+
+<h2>A suggestion of recipes</h2>
+
 <ul>
     <li *ngFor="let recipe of recipes">
-        {{ recipe.label }}
-        {{ recipe.mealType }}
-        {{ recipe.uri }}
+        <p class="h3">{{ recipe.label }}</p>
+        <img src="{{ recipe.image }}">
+        <p>{{ recipe.mealType }} {{recipe.dishType}} </p>
+        <p>Ingredients: {{ recipe.ingredientLines }}</p>
+        <a href="{{ recipe.url }}">Go to recipe</a>
     </li>
 </ul>
+
+<div>
+

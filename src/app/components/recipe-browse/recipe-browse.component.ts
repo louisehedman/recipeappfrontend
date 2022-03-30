@@ -21,4 +21,7 @@ export class RecipeBrowseComponent implements OnInit {
       console.log(this.recipes);
     });
   }
+
+
+ 
 }
