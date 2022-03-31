@@ -8,7 +8,7 @@ import { map } from 'rxjs'
   providedIn: 'root'
 })
 export class RecipeService {
-  
+
   api_key = 'a2fb12d2cc514e6298ef23ceeb46b1d0'
   api_auth = '&apiKey=' + this.api_key;
   apiURL = 'https://api.spoonacular.com/recipes'
@@ -26,4 +26,6 @@ export class RecipeService {
   getOneRecipe(id: number): Observable<any> {
     return this.http.get<any>(this.apiURL + '/' + id + '/information?' + this.api_auth)
   }
+
+  
 }
