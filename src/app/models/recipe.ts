@@ -1,37 +1,20 @@
 export interface Recipe {
-        uri: string;
-        label: string;
-        image: string;
-        images: Imageinfo;
-        source: string;
-        url: string;
-        shareAs: string;
-        yield: number; 
-        dietLabels: string[];
-        healthLabels: string[];
-        cautions: string[];
-        ingredientLines: string[];
-        ingredients: Ingredient[];
-        calories: number; 
-        glycemicIndex: number; 
-        totalWeight: number; 
-        cuisineType: string[];
-        mealType: string[];
-        dishType: string[];
-}
-
-interface Imageinfo {
-    url: string;
-    width: number;
-    height: number;
-}
-
-interface Ingredient {
-    text: string;
-    quantity: number;
-    measure: string;
-    food: string;
-    weight: number;
-    foodId: string;
+  id: number;
+  title: string;
+  image: string;
+  instructions: string;
+  dishTypes: string[];
+  vegan: boolean;
+  vegetarian: boolean;
+  summary: string;
+  servings: number;
+  readyInMinutes: number;
+  extendedIngredients: any;
+  glutenFree: boolean;
+  dairyFree: boolean;
+  diet: string;
+  cheap: boolean;
+  veryHealthy: boolean;
+  veryPopular: boolean;
 }
 

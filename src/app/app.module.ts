@@ -11,6 +11,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { AuthInterceptor } from './services/auth.interceptor';
 import { HeaderComponent } from './components/header/header.component';
 import { RecipeBrowseComponent } from './components/recipe-browse/recipe-browse.component';
+import { RecipeComponent } from './components/recipe/recipe.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { RecipeBrowseComponent } from './components/recipe-browse/recipe-browse.
     SignupComponent,
     UserProfileComponent,
     HeaderComponent,
-    RecipeBrowseComponent
+    RecipeBrowseComponent,
+    RecipeComponent
   ],
   imports: [
     BrowserModule,

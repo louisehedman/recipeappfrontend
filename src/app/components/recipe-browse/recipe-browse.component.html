@@ -4,11 +4,11 @@
 
 <ul>
     <li *ngFor="let recipe of recipes">
-        <p class="h3">{{ recipe.label }}</p>
+        <p class="h3">{{ recipe.title }}</p>
         <img src="{{ recipe.image }}">
-        <p>{{ recipe.mealType }} {{recipe.dishType}} </p>
-        <p>Ingredients: {{ recipe.ingredientLines }}</p>
-        <a href="{{ recipe.url }}">Go to recipe</a>
+        <p>{{ recipe.diets }}</p> 
+        <p>{{recipe.dishTypes}} </p>
+        <a class="btn btn-success" routerLink="/recipe/{{recipe.id}}" routerLinkActive="active">Go to recipe</a>
     </li>
 </ul>
 
