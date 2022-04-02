@@ -26,4 +26,25 @@ export class RecipeBrowseComponent implements OnInit {
       console.log(this.recipes);
     })
   }
+
+  dietVegan() {
+    this.recipes = [...this.recipes.filter((recipe) => recipe.vegan)];
+    console.log(this.recipes);
+  }
+
+  dietGlutenFree() {
+    this.recipes = [...this.recipes.filter((recipe) => recipe.glutenFree)];
+  }
+
+  dietDairyFree() {
+    this.recipes = [...this.recipes.filter((recipe) => recipe.dairyFree)];
+  }
+
+  dietVeryHealthy() {
+    this.recipes = [...this.recipes.filter((recipe) => recipe.veryHealthy)];
+  }
+
+  dishType(dishType: any) {
+    this.recipes = [...this.recipes.filter((recipe) => recipe.dishTypes.includes(dishType))];
+  }
 }

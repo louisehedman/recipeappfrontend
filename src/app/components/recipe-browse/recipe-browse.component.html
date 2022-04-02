@@ -1,16 +1,23 @@
-<h1>Welcome to Recipe app U06</h1>
+<h1>Welcome to random recipe app</h1>
 
-<h2>A suggestion of recipes</h2>
-
+<p class="h3">Find your favourite recipes, but make sure to create an account and save them in lists! </p>
+<img src="../../../assets/img/fortunewheel.jpg" alt="fortune wheel">
 <ul>
-    <li *ngFor="let recipe of recipes">
-        <p class="h3">{{ recipe.title }}</p>
-        <img src="{{ recipe.image }}">
-        <p>{{ recipe.diets }}</p> 
-        <p>{{recipe.dishTypes}} </p>
-        <a class="btn btn-success" routerLink="/recipe/{{recipe.id}}" routerLinkActive="active">Go to recipe</a>
-    </li>
+<li><button (click)="dishType('starter')">Starters</button></li>
+<li><button (click)="dishType('main course')">Main courses</button></li>
+<li><button (click)="dishType('dessert')">Desserts</button></li>
+<li><button (click)="dietVegan()">Vegan</button></li>
+<li><button (click)="dietGlutenFree()">Gluten free</button></li>
+<li><button (click)="dietDairyFree()">Dairy free</button></li>
+<li><button (click)="getAllRecipes()">Give me 50 new random recipes!</button></li>
 </ul>
 
-<div>
+<div *ngFor="let recipe of recipes">
+    <p class="h3">{{ recipe.title }}</p>
+    <img src="{{ recipe.image }}">
+    <p>{{ recipe.diets }}</p> 
+    <p>{{recipe.dishTypes}} </p>
+    <a class="btn btn-success" routerLink="/recipe/{{recipe.id}}" routerLinkActive="active">Go to recipe</a>
+</div>
+
 
