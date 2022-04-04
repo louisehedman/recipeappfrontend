@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { RecipeService} from '../../services/recipe.service';
 import { Router, ActivatedRoute, ParamMap} from '@angular/router';
+import { AuthStateService } from '../../services/auth-state.service';
 import { Recipe } from '../../models/recipe';
 import { Subscription } from 'rxjs';
 
@@ -11,13 +12,17 @@ import { Subscription } from 'rxjs';
 })
 export class RecipeBrowseComponent implements OnInit {
   recipes: any[] = [];
+  isSignedIn!: boolean;
   
   //private subscriptions = new Subscription();
   
-  constructor(public recipeService: RecipeService, private route: ActivatedRoute, public router: Router) { }
+  constructor(public recipeService: RecipeService, private route: ActivatedRoute, public router: Router, private auth: AuthStateService) { }
   
   ngOnInit(): void {
     this.getAllRecipes();
+    this.auth.userAuthState.subscribe((val) => {
+      this.isSignedIn = val;
+    })
   } 
 
   getAllRecipes(): void{
@@ -38,10 +43,6 @@ export class RecipeBrowseComponent implements OnInit {
 
   dietDairyFree() {
     this.recipes = [...this.recipes.filter((recipe) => recipe.dairyFree)];
-  }
-
-  dietVeryHealthy() {
-    this.recipes = [...this.recipes.filter((recipe) => recipe.veryHealthy)];
   }
 
   dishType(dishType: any) {

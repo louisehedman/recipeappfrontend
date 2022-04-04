@@ -12,6 +12,8 @@ import { AuthInterceptor } from './services/auth.interceptor';
 import { HeaderComponent } from './components/header/header.component';
 import { RecipeBrowseComponent } from './components/recipe-browse/recipe-browse.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
+import { RecipeListsComponent } from './components/recipe-lists/recipe-lists.component';
+import { RecipeListComponent } from './components/recipe-list/recipe-list.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { RecipeComponent } from './components/recipe/recipe.component';
     UserProfileComponent,
     HeaderComponent,
     RecipeBrowseComponent,
-    RecipeComponent
+    RecipeComponent,
+    RecipeListsComponent,
+    RecipeListComponent
   ],
   imports: [
     BrowserModule,
