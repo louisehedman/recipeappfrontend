@@ -17,10 +17,11 @@ export class RecipeListsComponent implements OnInit {
   allRecipeLists: any = [];
   subscription!: Subscription;
   recipeList!: RecipeList;
+  id!: number;
 
 
 
-  constructor(public recipeListService: RecipeListService, public fb: FormBuilder, public router: Router /*public auth: AuthStateService*/) { }
+  constructor(public recipeListService: RecipeListService, public fb: FormBuilder, public router: Router, private route: ActivatedRoute /*public auth: AuthStateService*/) { }
 
   ngOnInit(): void {
 
@@ -39,11 +40,19 @@ export class RecipeListsComponent implements OnInit {
     return this.createForm.controls;
   }
 
-  submit(){
+  onSubmit(){
     console.log(this.createForm.value);
     this.recipeListService.createRecipeList(this.createForm.value).subscribe((res:any) => {
          console.log('List created successfully!');
     })
+  }
+
+  getOneList(): void {
+    this.id = this.route.snapshot.params['recipeListId'];
+         
+    this.recipeListService.getOneRecipeList(this.id).subscribe((data: RecipeList)=>{
+      this.recipeList = data;
+    });
   }
 
 }

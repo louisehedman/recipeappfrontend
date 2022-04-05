@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'profile', component: UserProfileComponent },
   { path: 'recipes', component: RecipeBrowseComponent },
   { path: 'recipe-lists', component: RecipeListsComponent },
-  { path: 'recipe-list', component: RecipeListComponent },
+  { path: 'recipe-list/:recipeListId', component: RecipeListComponent },
 ];
 
 @NgModule({

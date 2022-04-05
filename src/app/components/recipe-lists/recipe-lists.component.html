@@ -12,7 +12,7 @@
                 </div>
 
               <!---- Create a new list -->
-                <form [formGroup]="createForm" (ngSubmit)="submit()">
+                <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
                     <div class="form-group row m-2">
                         <div class="row">
                             <label for="name" class="col-sm-2 col-form-label">Name your list:</label>
@@ -44,7 +44,9 @@
                             <tbody>
                                 <tr *ngFor="let recipeList of allRecipeLists">
                                     <td> {{ recipeList.name }}</td>
-                                    <td></td>
+                                    <td>
+                                        <a href="#" [routerLink]="['/recipe-list/', recipeList.id]" class="btn btn-info">View</a>
+                                    </td>
                                     <td></td>
                                     <td></td>
                                 </tr>
