@@ -11,22 +11,24 @@
                     </h2>
                 </div>
 
-                <!---- Create a new list -->
-                <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
-                    <input hidden name="user_id" value="{{ isSignedIn }}">
-                    <div class="row m-2">
+              <!---- Create a new list -->
+                <form [formGroup]="createForm" (ngSubmit)="submit()">
+                    <div class="form-group row m-2">
                         <div class="row">
                             <label for="name" class="col-sm-2 col-form-label">Name your list:</label>
                             <div class="col-sm-10 p-2">
-                                <input type="text" formControlName="name" class="form-control">
+                                <input type="text" id="name" formControlName="name" class="form-control">
+                            </div>
+                            <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+                                <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
                             </div>
                         </div>
                         <div class="col-auto p-2">
-                            <button type="submit" name="submit" class="btn btn-success btn-sm">Create List</button>
+                            <button type="submit" name="submit" [disabled]="!createForm.valid" class="btn btn-success btn-sm">Create List</button>
                         </div>
                     </div>
                 </form>
-        
+
                 <!-- Display recipe lists -->
                 <section class="table-responsive">
                     <div class="card-body text-center">
@@ -40,8 +42,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="">
-                                    <td></td>
+                                <tr *ngFor="let recipeList of allRecipeLists">
+                                    <td> {{ recipeList.name }}</td>
                                     <td></td>
                                     <td></td>
                                     <td></td>

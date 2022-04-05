@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable, pipe } from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { RecipeList } from '../models/recipeList';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeListService {
+  //recipeList: any = [];
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -23,8 +25,8 @@ export class RecipeListService {
     return this.http.get<any>('https://randomrecipeappu06.herokuapp.com/api/auth/recipe-lists/' + id)
   }
 
-  createRecipeList(name: string): Observable<any> {
-    return this.http.post<any>('https://randomrecipeappu06.herokuapp.com/api/auth/recipe-lists', { name: name })
+  createRecipeList(name: string): Observable<RecipeList>{
+    return this.http.post<RecipeList>('https://randomrecipeappu06.herokuapp.com/api/auth/recipe-lists', JSON.stringify(name), this.httpOptions)
   }
 
   updateRecipeList(id: number, name: string, recipes_id: string): Observable<any> {
