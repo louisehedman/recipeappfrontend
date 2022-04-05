@@ -4,6 +4,7 @@ import { RecipeListService } from 'src/app/services/recipe-list.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { RecipeList } from '../../models/recipeList';
 import { Recipe } from '../../models/recipe';
+import { AuthStateService } from 'src/app/services/auth-state.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -16,10 +17,15 @@ recipeListId!: number;
 recipesId: any = [];
 recipeList!: RecipeList;
 recipe: Recipe[] = [];
+isSignedIn!: boolean;
 
-constructor(public recipeListService: RecipeListService, public recipeService: RecipeService, public route: ActivatedRoute, public router: Router) { }
+constructor(public recipeListService: RecipeListService, public recipeService: RecipeService, public route: ActivatedRoute, public router: Router, public auth: AuthStateService) { }
 
   ngOnInit(): void {
+    this.auth.userAuthState.subscribe((val) => {
+      this.isSignedIn = val;
+    });
+
       this.recipeListId = this.route.snapshot.params['recipeListId'];
            
       this.recipeListService.getOneRecipeList(this.recipeListId).subscribe((data: RecipeList)=>{

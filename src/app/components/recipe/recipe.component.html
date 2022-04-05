@@ -1,7 +1,39 @@
-<div *ngIf="recipe">
+<!--<div *ngIf="recipe">
 <h2>{{ recipe.title }}</h2>
 <img src="{{recipe.image}}">
 <p>{{recipe.extendedIngredients.id}}</p>
-</div>
+</div>-->
+
+
+<div *ngIf="recipe" class="container text-center my-5">
+        <div class="m-2">
+            <h2 class="display-2">{{ recipe.title }}</h2>
+        </div>
+
+        <!--Image and description section-->
+        <section class="container">
+            <img src="{{ recipe.image }}" class="img-fluid mb-3" alt="Recipe image">
+            <div class="d-flex justify-content-around">
+
+                <!-- Form to post to recipe list-->
+                <form method="post" action="">
+                    <input hidden name="" value="">
+
+                    <input hidden name="user_id" value="">
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-dark">+ Add to recipe list</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="row align-items-center">
+                <h2 class="display-6 mb-2">Description</h2>
+                <p class="f2-6"></p>
+                <p class="f2-6"></p>
+            </div>
+        </section>
+
+        
 
 

@@ -1,23 +1,47 @@
-<h1>Welcome to random recipe app</h1>
 
-<p class="h3">Find your favourite recipes, but make sure to create an account and save them in lists! </p>
-<img src="../../../assets/img/fortunewheel.jpg" alt="fortune wheel">
-<ul>
-<li><button (click)="dishType('starter')">Starters</button></li>
-<li><button (click)="dishType('main course')">Main courses</button></li>
-<li><button (click)="dishType('dessert')">Desserts</button></li>
-<li><button (click)="dietVegan()">Vegan</button></li>
-<li><button (click)="dietGlutenFree()">Gluten free</button></li>
-<li><button (click)="dietDairyFree()">Dairy free</button></li>
-<li><button (click)="getAllRecipes()">Give me 50 new random recipes!</button></li>
-</ul>
+<section class="container my-5">
+    <div class="pb-3 text-center">
+        <h1 class="display-1">Welcome to random recipe app</h1>
+        <br>
+        <p class="h3">Find your favourite recipes, but make sure to create an account and save them in lists! </p>
+        <br>
+        <img src="../../../assets/img/fortunewheel.jpg" alt="fortune wheel">
+    </div>
+</section>
 
-<div *ngFor="let recipe of recipes">
-    <p class="h3">{{ recipe.title }}</p>
-    <img src="{{ recipe.image }}">
-    <p>{{ recipe.diets }}</p> 
-    <p>{{recipe.dishTypes}} </p>
-    <a class="btn btn-success" routerLink="/recipe/{{recipe.id}}" routerLinkActive="active">Go to recipe</a>
-</div>
+<section class="container my-5">
+    <div class="list-group d-flex justify-content-around">
+        <h2 class="list-group-item text-center h3">Filter recipes</h2>
+        <button type="button" class="list-group-item btn btn-secondary h4" (click)="dishType('starter')">Starters</button>
+        <button type="button" class="list-group-item btn btn-secondary h4" (click)="dishType('main course')">Main courses</button>
+        <button type="button" class="list-group-item btn btn-secondary h4" (click)="dishType('dessert')">Desserts</button>
+        <button type="button" class="list-group-item btn btn-secondary h4" (click)="dietVegan()">Vegan</button>
+        <button type="button" class="list-group-item btn btn-secondary h4" (click)="dietGlutenFree()">Gluten free</button>
+        <button type="button" class="list-group-item btn btn-secondary h4" (click)="dietDairyFree()">Dairy free</button>
+        <button type="button" class="list-group-item btn btn-outline-success h4" (click)="getAllRecipes()">Give me 50 new random recipes!</button>
+    </div>
+</section>
+
+<section class="container my-5">
+    <div class="pb-3 text-center">
+      <h2 class="display-1">Recipes</h2>
+    </div>
+
+    <!-- Display movies in genre -->
+    <div class="d-flex justify-content-evenly">
+      <div class="row">
+        <div *ngFor="let recipe of recipes" class="col-12 col-md-6 col-lg-4 d-flex justify-content-center" style="height: 550px;">
+          <div class="card p-1 m-2 justify-content-center">
+            <h3>{{ recipe.title }}</h3>
+            <img routerLink="/recipe/{{recipe.id}}" routerLinkActive="active" src="{{ recipe.image }}" alt="recipe image" class="card-img-top pb-1 " style="height: 300px;">
+            <p class="h6">Diet labels: {{ recipe.diets }}</p> 
+            <p class="h6">Dishtype labels: {{recipe.dishTypes}}</p>
+            <a class="btn btn-success text-center" style="width: 40%;" routerLink="/recipe/{{recipe.id}}" routerLinkActive="active">Go to recipe</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
 
