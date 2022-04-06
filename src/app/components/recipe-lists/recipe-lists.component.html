@@ -34,7 +34,6 @@
                                 <tr>
                                     <th>List name</th>
                                     <th>Go to list</th>
-                                    <th>Edit list name</th>
                                     <th>Delete list</th>
                                 </tr>
                             </thead>
@@ -45,6 +44,7 @@
                                         <a href="#" [routerLink]="['/recipe-list/', recipeList.id]" class="btn btn-info">View</a>
                                     </td>
                                     <td>
+                                        <button type="button" (click)="deleteList(recipeList.id)" class="btn btn-danger">Delete</button>
                                     </td>
                                     <td></td>
                                 </tr>

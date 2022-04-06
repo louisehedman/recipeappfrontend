@@ -10,12 +10,12 @@
                 <form [formGroup]="updateForm" (ngSubmit)="onUpdate()">
      
                     <div class="form-group">
-                        <label for="name">Name:</label>
+                        <label for="name">Edit list name</label>
                         <input
                             formControlName="name"
                             id="name"
+                            placeholder="{{ recipeList.name }}"
                             type="text"
-                            [(ngModel)]="recipeList.name"
                             class="form-control">
                         <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
                             <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>

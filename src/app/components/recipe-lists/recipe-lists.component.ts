@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
 })
 export class RecipeListsComponent implements OnInit {
   createForm!: FormGroup;
-  allRecipeLists: any = [];
+  allRecipeLists: RecipeList[] = [];
   subscription!: Subscription;
   recipeList!: RecipeList;
   id!: number;
@@ -31,7 +31,7 @@ export class RecipeListsComponent implements OnInit {
     });
   
     this.subscription = this.recipeListService.getAllRecipeLists()
-    .subscribe((data: any) => {
+    .subscribe((data: RecipeList[]) => {
       this.allRecipeLists = data;
       console.log(this.allRecipeLists);
     });
@@ -54,6 +54,13 @@ export class RecipeListsComponent implements OnInit {
     this.recipeListService.getOneRecipeList(this.id).subscribe((data: RecipeList)=>{
       this.recipeList = data;
     });
+  }
+
+  deleteList(id:number){
+    this.recipeListService.deleteRecipeList(id).subscribe(res => {
+         this.allRecipeLists = this.allRecipeLists.filter(recipeList => recipeList.id !== id);
+         console.log('Recipe list deleted successfully!');
+    })
   }
 
 }
