@@ -15,7 +15,7 @@
             <img src="{{ recipe.image }}" class="img-fluid mb-3" alt="Recipe image">
             <div class="d-flex justify-content-around">
 
-                <!-- Form to post to recipe list-->
+                <!--Form to post to recipe list
                 <form method="post" action="">
                     <input hidden name="" value="">
 
@@ -25,7 +25,27 @@
                         <button type="submit" class="btn btn-dark">+ Add to recipe list</button>
                     </div>
                 </form>
+            </div> -->
+            <div *ngIf="isSignedIn">
+            <div *ngFor="let recipeList of allRecipeLists">
+            <form [formGroup]="updateForm" (ngSubmit)="onAddToList()">
+            <div class="form-group">
+                <label for="recipes_id"> {{ recipe.id }} </label>
+                <input hidden
+                    formControlName="recipes_id"
+                    id="recipes_id"
+                    value="{{ recipe.id }}"
+                    type="button"
+                    class="form-control">
+                <div *ngIf="f['recipes_id'].touched && f['recipes_id'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['recipes_id'].errors && f['recipes_id'].errors['required']">Name is required.</div>
+                </div>
             </div>
+            <button class="btn btn-primary" type="submit" [disabled]="!updateForm.valid">+ Add to list {{ recipeList.name }}</button>
+        </form>
+        </div>
+        </div>
+        </div>
 
             <div class="row align-items-center">
                 <h2 class="display-6 mb-2">Description</h2>
@@ -33,6 +53,7 @@
                 <p class="f2-6"></p>
             </div>
         </section>
+
 
         
 
