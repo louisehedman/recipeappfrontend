@@ -6,6 +6,23 @@
                     <h2 id="">List name: {{ recipeList.name }}   
                         <a routerLink="/recipe-lists" class="btn btn-dark float-end">BACK</a>
                     </h2>
+                    <!-- update list name form -->
+                <form [formGroup]="updateForm" (ngSubmit)="onUpdate()">
+     
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input
+                            formControlName="name"
+                            id="name"
+                            type="text"
+                            [(ngModel)]="recipeList.name"
+                            class="form-control">
+                        <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+                            <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit" [disabled]="!updateForm.valid">Update</button>
+                </form>
                 </div>
                 <section class="table-responsive">
                     <div class="card-body text-center">

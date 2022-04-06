@@ -29,8 +29,8 @@ export class RecipeListService {
     return this.http.post<RecipeList>('https://randomrecipeappu06.herokuapp.com/api/auth/recipe-lists', JSON.stringify(name), this.httpOptions)
   }
 
-  updateRecipeList(id: number, name: string, recipes_id: string): Observable<any> {
-    return this.http.put<any>('https://randomrecipeappu06.herokuapp.com/api/auth/recipe-lists/' + id, { name: name, recipes_id: recipes_id})
+  updateRecipeList(id: number, recipeList: any): Observable<RecipeList> {
+    return this.http.put<RecipeList>('https://randomrecipeappu06.herokuapp.com/api/auth/recipe-lists/' + id, JSON.stringify(recipeList), this.httpOptions)
   }
 
   deleteRecipeList(id: number): Observable<any> {

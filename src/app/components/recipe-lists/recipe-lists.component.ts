@@ -18,6 +18,7 @@ export class RecipeListsComponent implements OnInit {
   subscription!: Subscription;
   recipeList!: RecipeList;
   id!: number;
+  recipes_id!: string;
 
 
 
