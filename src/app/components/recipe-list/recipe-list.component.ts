@@ -18,7 +18,7 @@ recipeListId!: number;
 recipesId: any = [];
 recipeList!: RecipeList;
 recipe: Recipe[] = [];
-recipes_id!: string;
+recipes_api_id!: number;
 isSignedIn!: boolean;
 updateForm!: FormGroup;
 id!: number;
