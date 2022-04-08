@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, pipe } from 'rxjs';
+import { map, Observable, pipe } from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { RecipeList } from '../models/recipeList';
 import { ApiRecipe } from '../models/apiRecipe';
@@ -9,7 +9,6 @@ import { ApiRecipe } from '../models/apiRecipe';
   providedIn: 'root'
 })
 export class RecipeListService {
-  //recipeList: any = [];
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -39,8 +38,13 @@ export class RecipeListService {
     return this.http.delete<any>('https://randomrecipeappu06.herokuapp.com/api/auth/recipe-lists/' + id)
   }
 
-  addRecipe(id: number, apiRecipe: ApiRecipe): Observable<any> {
-    return this.http.post<ApiRecipe>('https://randomrecipeappu06.herokuapp.com/api/auth/' + id + '/recipes', apiRecipe)
+  getAllListRecipes(id: number | string): Observable<ApiRecipe[]> {
+    return this.http.get<any['recipes']>('https://randomrecipeappu06.herokuapp.com/api/auth/recipe-list/' + id).pipe(
+      map((result: { recipes: any; }) => result.recipes));
+  }
+  
+  addRecipe(id: number | string, apiRecipe: ApiRecipe): Observable<any> {
+    return this.http.post<any>('https://randomrecipeappu06.herokuapp.com/api/auth/recipe-list/' + id, apiRecipe)
   }
 
   deleteRecipe(recipeListId: number, apiRecipeId: number): Observable<any> {

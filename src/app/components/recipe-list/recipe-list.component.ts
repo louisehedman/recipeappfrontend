@@ -4,6 +4,7 @@ import { RecipeListService } from 'src/app/services/recipe-list.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { RecipeList } from '../../models/recipeList';
 import { Recipe } from '../../models/recipe';
+import { ApiRecipe, ApiRecipes } from '../../models/apiRecipe';
 import { AuthStateService } from 'src/app/services/auth-state.service';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -17,11 +18,13 @@ export class RecipeListComponent implements OnInit {
 recipeListId!: number;
 recipesId: any = [];
 recipeList!: RecipeList;
+allListRecipes!: ApiRecipes['recipes'];
+apiRecipe!: ApiRecipe[];
 recipe: Recipe[] = [];
-recipe_api_id!: number;
 isSignedIn!: boolean;
 updateForm!: FormGroup;
 id!: number;
+subscription!: Subscription;
 
 constructor(public recipeListService: RecipeListService, public recipeService: RecipeService, public route: ActivatedRoute, public router: Router, public auth: AuthStateService, public fb: FormBuilder) { }
 
@@ -35,12 +38,18 @@ constructor(public recipeListService: RecipeListService, public recipeService: R
     })
 
       this.recipeListId = this.route.snapshot.params['recipeListId'];
+      
+      this.subscription = this.recipeListService.getAllListRecipes(this.recipeListId)
+      .subscribe((data: ApiRecipe[]) => {
+      this.allListRecipes = data;
+      console.log(data)
+    });
+      
+      this.recipeListService.getAllListRecipes(this.recipeListId)
            
       this.recipeListService.getOneRecipeList(this.recipeListId).subscribe((data: RecipeList)=>{
         this.recipeList = data;
-      });
-  
-
+    });
   }
 
   get f(){
@@ -52,7 +61,6 @@ constructor(public recipeListService: RecipeListService, public recipeService: R
     this.recipeListService.updateRecipeList(this.recipeListId, this.updateForm.value).subscribe((res:any) => {
          console.log('List name updated successfully!');
     })
-
   }
 
 }

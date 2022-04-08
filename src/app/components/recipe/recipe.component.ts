@@ -5,6 +5,7 @@ import { Router, ActivatedRoute, ParamMap} from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Recipe } from '../../models/recipe';
 import { RecipeList } from '../../models/recipeList';
+import { ApiRecipe } from '../../models/apiRecipe';
 import { AuthStateService } from '../../services/auth-state.service';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
@@ -19,10 +20,9 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 export class RecipeComponent implements OnInit {
   private subscriptions = new Subscription();
-  updateForm!: FormGroup;
+  addRecipeForm!: FormGroup;
   recipe!: Recipe;
   recipes: any[] = [];
-  recipeId!: number;
   isSignedIn!: boolean;
   allRecipeLists: RecipeList[] = [];
   recipeList!: RecipeList;
@@ -38,11 +38,13 @@ export class RecipeComponent implements OnInit {
       this.isSignedIn = val;
     })
 
-    this.updateForm = new FormGroup({
-      recipes_id: new FormControl('',[Validators.required]),
+    this.addRecipeForm = new FormGroup({
+      recipeListId: new FormControl('', [Validators.required]),
+      recipe_api_id: new FormControl('',[Validators.required]),
+      title: new FormControl('',[Validators.required]),
+      img: new FormControl('',[Validators.required]),
     })
 
-    this.recipeListId = this.route.snapshot.params['recipeListId'];
 
   }
 
@@ -51,7 +53,13 @@ export class RecipeComponent implements OnInit {
       this.recipeService.getOneRecipe(id).subscribe((data: Recipe) => {
         this.recipe = data;
         console.log(this.recipe);
-      })
+      });
+
+      this.recipeListId = this.route.snapshot.params['recipeListId'];
+           
+      this.recipeListService.getOneRecipeList(this.recipeListId).subscribe((data: RecipeList)=>{
+        this.recipeList = data;
+      });
 
       this.subscription = this.recipeListService.getAllRecipeLists()
     .subscribe((data: RecipeList[]) => {
@@ -61,13 +69,13 @@ export class RecipeComponent implements OnInit {
   }
 
   get f(){
-    return this.updateForm.controls;
+    return this.addRecipeForm.controls;
   }
 
   onAddToList() {
-    //console.log(this.updateForm.value);
-    this.recipeListService.updateRecipeList(this.recipeListId, this.updateForm.value).subscribe((res:any) => { 
-      console.log('List name updated successfully!');
+    console.log(this.recipeListId, this.addRecipeForm.value);
+    this.recipeListService.addRecipe(this.recipeListId, this.addRecipeForm.value).subscribe((res:any) => { 
+      console.log('Recipe added successfully!');
     })
   }
 }
