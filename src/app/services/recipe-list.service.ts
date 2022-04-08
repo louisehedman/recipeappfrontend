@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, pipe } from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { RecipeList } from '../models/recipeList';
+import { ApiRecipe } from '../models/apiRecipe';
+
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +38,12 @@ export class RecipeListService {
   deleteRecipeList(id: number): Observable<any> {
     return this.http.delete<any>('https://randomrecipeappu06.herokuapp.com/api/auth/recipe-lists/' + id)
   }
-  
+
+  addRecipe(id: number, apiRecipe: ApiRecipe): Observable<any> {
+    return this.http.post<ApiRecipe>('https://randomrecipeappu06.herokuapp.com/api/auth/' + id + '/recipes', apiRecipe)
+  }
+
+  deleteRecipe(recipeListId: number, apiRecipeId: number): Observable<any> {
+    return this.http.delete<any>('https://randomrecipeappu06.herokuapp.com/api/auth/' + recipeListId + '/recipes/' + apiRecipeId)
+  }
 }
