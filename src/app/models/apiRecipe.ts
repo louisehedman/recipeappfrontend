@@ -3,7 +3,7 @@ export interface ApiRecipes {
 }
 
 export interface ApiRecipe {
-    id:number;
+    id: number | null;
     recipe_api_id: number;
     title: string;
     img: string;

@@ -3,6 +3,8 @@ import { map, Observable, pipe } from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { RecipeList } from '../models/recipeList';
 import { ApiRecipe } from '../models/apiRecipe';
+import { Recipe } from '../models/recipe';
+
 
 
 @Injectable({
@@ -43,8 +45,9 @@ export class RecipeListService {
       map((result: { recipes: any; }) => result.recipes));
   }
   
-  addRecipe(id: number | string, apiRecipe: ApiRecipe): Observable<any> {
-    return this.http.post<any>('https://randomrecipeappu06.herokuapp.com/api/auth/recipe-list/' + id, apiRecipe)
+  addRecipe(id: number | string, apiRecipe: Recipe): Observable<any> {
+    console.log("inside addRecipe, id: ", id, "; apiRecipe: ", apiRecipe, "; img: ", apiRecipe.image);
+    return this.http.post<any>('https://randomrecipeappu06.herokuapp.com/api/auth/recipe-list/' + id, {"title":apiRecipe.title, "recipe_api_id": apiRecipe.id, "img": apiRecipe.image}, this.httpOptions)
   }
 
   deleteRecipe(recipeListId: number, apiRecipeId: number): Observable<any> {

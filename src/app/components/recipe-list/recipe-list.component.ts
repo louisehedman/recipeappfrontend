@@ -63,4 +63,8 @@ constructor(public recipeListService: RecipeListService, public recipeService: R
     })
   }
 
+  onDeleteRecipe(){
+    
+  }
+
 }

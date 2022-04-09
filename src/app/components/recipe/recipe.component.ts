@@ -19,8 +19,11 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
   styleUrls: ['./recipe.component.css']
 })
 export class RecipeComponent implements OnInit {
+
+  @Input() data!: Recipe;
   private subscriptions = new Subscription();
   addRecipeForm!: FormGroup;
+  apiRecipe!: ApiRecipe;
   recipe!: Recipe;
   recipes: any[] = [];
   isSignedIn!: boolean;
@@ -38,14 +41,13 @@ export class RecipeComponent implements OnInit {
       this.isSignedIn = val;
     })
 
-    this.addRecipeForm = new FormGroup({
-      recipeListId: new FormControl('', [Validators.required]),
-      recipe_api_id: new FormControl('',[Validators.required]),
-      title: new FormControl('',[Validators.required]),
-      img: new FormControl('',[Validators.required]),
-    })
-
-
+    this.apiRecipe = {
+      id: null,
+      recipe_api_id: this.data.id,
+      title: this.data.title,
+      img: this.data.image,
+    };
+    console.log("inside onInit: ", this.apiRecipe);
   }
 
   getOneRecipe(): void {
@@ -68,14 +70,11 @@ export class RecipeComponent implements OnInit {
     });
   }
 
-  get f(){
-    return this.addRecipeForm.controls;
-  }
-
-  onAddToList() {
-    console.log(this.recipeListId, this.addRecipeForm.value);
-    this.recipeListService.addRecipe(this.recipeListId, this.addRecipeForm.value).subscribe((res:any) => { 
+  onAddToList(recipeListId: number, apiRecipe: any) {
+    console.log(this.recipeListId, this.apiRecipe, "input param: ", recipeListId);
+    this.recipeListService.addRecipe(recipeListId, apiRecipe).subscribe((res:any) => { 
       console.log('Recipe added successfully!');
+      console.log('res: ', res);
     })
   }
 }
