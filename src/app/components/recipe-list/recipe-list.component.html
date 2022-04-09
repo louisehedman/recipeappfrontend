@@ -44,7 +44,7 @@
                                     <td> {{recipe.title }}</td>
                                     <td>{{recipe.recipe_api_id}}</td>
                                     <td>
-                                        <button type="button" (click)="onDeleteRecipe()" class="btn btn-danger">Delete</button>
+                                        <button type="button" (click)="onDeleteRecipe(recipeList.id, recipe.id)" class="btn btn-danger">Delete</button>
                                     </td>
                                 </tr>
                             </tbody>

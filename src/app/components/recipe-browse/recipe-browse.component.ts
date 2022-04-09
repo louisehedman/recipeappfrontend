@@ -13,16 +13,15 @@ import { Subscription } from 'rxjs';
 export class RecipeBrowseComponent implements OnInit {
   recipes: any[] = [];
   isSignedIn!: boolean;
-  
-  //private subscriptions = new Subscription();
-  
+
   constructor(public recipeService: RecipeService, private route: ActivatedRoute, public router: Router, private auth: AuthStateService) { }
   
   ngOnInit(): void {
     this.getAllRecipes();
     this.auth.userAuthState.subscribe((val) => {
       this.isSignedIn = val;
-    })
+    });
+
   } 
 
   getAllRecipes(): void{
@@ -30,6 +29,9 @@ export class RecipeBrowseComponent implements OnInit {
       this.recipes = data;
       console.log(this.recipes);
     })
+  }
+
+  resetAllFilters() {
   }
 
   dietVegan() {

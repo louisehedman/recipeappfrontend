@@ -16,6 +16,7 @@ import { Subscription } from 'rxjs';
 })
 export class RecipeListComponent implements OnInit {
 recipeListId!: number;
+apiRecipeId!: number;
 recipesId: any = [];
 recipeList!: RecipeList;
 allListRecipes!: ApiRecipes['recipes'];
@@ -45,7 +46,7 @@ constructor(public recipeListService: RecipeListService, public recipeService: R
       console.log(data)
     });
       
-      this.recipeListService.getAllListRecipes(this.recipeListId)
+      //this.recipeListService.getAllListRecipes(this.recipeListId)
            
       this.recipeListService.getOneRecipeList(this.recipeListId).subscribe((data: RecipeList)=>{
         this.recipeList = data;
@@ -60,11 +61,15 @@ constructor(public recipeListService: RecipeListService, public recipeService: R
     console.log(this.updateForm.value);
     this.recipeListService.updateRecipeList(this.recipeListId, this.updateForm.value).subscribe((res:any) => {
          console.log('List name updated successfully!');
+         this.ngOnInit();
     })
   }
 
-  onDeleteRecipe(){
+  onDeleteRecipe(recipeListId: number, apiRecipeId: any) {
+    this.recipeListService.deleteRecipe(recipeListId, apiRecipeId).subscribe((res:any) => {
+      console.log('Recipe deleted successfully!');
+      this.ngOnInit();
+ });
     
   }
-
 }
