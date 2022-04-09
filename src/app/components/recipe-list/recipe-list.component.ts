@@ -45,9 +45,7 @@ constructor(public recipeListService: RecipeListService, public recipeService: R
       this.allListRecipes = data;
       console.log(data)
     });
-      
-      //this.recipeListService.getAllListRecipes(this.recipeListId)
-           
+                 
       this.recipeListService.getOneRecipeList(this.recipeListId).subscribe((data: RecipeList)=>{
         this.recipeList = data;
     });

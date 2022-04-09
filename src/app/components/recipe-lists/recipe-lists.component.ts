@@ -45,6 +45,7 @@ export class RecipeListsComponent implements OnInit {
     console.log(this.createForm.value);
     this.recipeListService.createRecipeList(this.createForm.value).subscribe((res:any) => {
          console.log('List created successfully!');
+         this.ngOnInit();
     })
   }
 

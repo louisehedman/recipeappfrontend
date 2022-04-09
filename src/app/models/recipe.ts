@@ -9,7 +9,7 @@ export interface Recipe {
   summary: string;
   servings: number;
   readyInMinutes: number;
-  extendedIngredients: any;
+  extendedIngredients: ExtendedIngredient[];
   glutenFree: boolean;
   dairyFree: boolean;
   diet: string;
@@ -18,3 +18,8 @@ export interface Recipe {
   veryPopular: boolean;
 }
 
+export interface ExtendedIngredient {
+  id: number;
+  name: string;
+  original: string;
+}

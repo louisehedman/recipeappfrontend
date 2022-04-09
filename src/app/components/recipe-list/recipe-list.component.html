@@ -29,11 +29,10 @@
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th>Image</th>
+                                    <th></th>
                                     <th>Recipe title</th>
-                                    <th>Go to recipe</th>
-                                    <th></th>
-                                    <th></th>
+                                    <th>Visit recipe</th>
+                                    <th>Delete recipe</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,7 +41,7 @@
                                         <img src="{{ recipe.img }}" class="img-fluid mb-3" alt="Recipe image">
                                     </td>
                                     <td> {{recipe.title }}</td>
-                                    <td>{{recipe.recipe_api_id}}</td>
+                                    <td><a routerLink="/recipe/{{recipe.id}}" class="btn btn-success">View</a></td>
                                     <td>
                                         <button type="button" (click)="onDeleteRecipe(recipeList.id, recipe.id)" class="btn btn-danger">Delete</button>
                                     </td>

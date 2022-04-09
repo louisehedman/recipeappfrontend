@@ -3,7 +3,7 @@ import { RecipeService} from '../../services/recipe.service';
 import { RecipeListService} from '../../services/recipe-list.service';
 import { Router, ActivatedRoute, ParamMap} from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Recipe } from '../../models/recipe';
+import { Recipe, ExtendedIngredient } from '../../models/recipe';
 import { RecipeList } from '../../models/recipeList';
 import { ApiRecipe } from '../../models/apiRecipe';
 import { AuthStateService } from '../../services/auth-state.service';
@@ -25,6 +25,7 @@ export class RecipeComponent implements OnInit {
   addRecipeForm!: FormGroup;
   apiRecipe!: ApiRecipe;
   recipe!: Recipe;
+  extendedIngredients: ExtendedIngredient[] = [];
   recipes: any[] = [];
   isSignedIn!: boolean;
   allRecipeLists: RecipeList[] = [];

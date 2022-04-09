@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-header py-2">
                     <h2 id="myrecipelists">My recipe lists
-                        <a href="" class="btn btn-dark float-end">BACK</a>
+                        <a routerLink="/" href="" class="btn btn-dark float-end">HOME</a>
                     </h2>
                 </div>
 
@@ -41,7 +41,7 @@
                                 <tr *ngFor="let recipeList of allRecipeLists">
                                     <td> {{ recipeList.name }}</td>
                                     <td>
-                                        <a href="#" [routerLink]="['/recipe-list/', recipeList.id]" class="btn btn-info">View</a>
+                                        <a href="#" [routerLink]="['/recipe-list/', recipeList.id]" class="btn btn-success">View</a>
                                     </td>
                                     <td>
                                         <button type="button" (click)="deleteList(recipeList.id)" class="btn btn-danger">Delete</button>

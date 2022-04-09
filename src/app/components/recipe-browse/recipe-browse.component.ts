@@ -10,9 +10,12 @@ import { Subscription } from 'rxjs';
   templateUrl: './recipe-browse.component.html',
   styleUrls: ['./recipe-browse.component.css']
 })
+
+
 export class RecipeBrowseComponent implements OnInit {
   recipes: any[] = [];
   isSignedIn!: boolean;
+
 
   constructor(public recipeService: RecipeService, private route: ActivatedRoute, public router: Router, private auth: AuthStateService) { }
   
@@ -29,9 +32,6 @@ export class RecipeBrowseComponent implements OnInit {
       this.recipes = data;
       console.log(this.recipes);
     })
-  }
-
-  resetAllFilters() {
   }
 
   dietVegan() {
