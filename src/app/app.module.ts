@@ -27,7 +27,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     RecipeComponent,
     RecipeListsComponent,
     RecipeListComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
