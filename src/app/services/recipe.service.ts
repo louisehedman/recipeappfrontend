@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, pipe } from 'rxjs';
+import { Observable } from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-//import { environment } from '/environments/environment';
-import { environment } from 'src/environments/environment.prod'
-import { Recipe } from '../models/recipe';
+import { environment } from '../../environments/environment';
 import { map } from 'rxjs'
 
 @Injectable({
@@ -13,10 +11,8 @@ export class RecipeService {
   recipes: any = [];
   recipeList: any;
 
-  api_key = 'a2fb12d2cc514e6298ef23ceeb46b1d0'
-  //'322dfdd7a61b4981822dbd8ebc5fc566'
-  api_auth = '&apiKey=' + this.api_key
-  apiURL = 'https://api.spoonacular.com/recipes'
+  api_auth = '&apiKey=' + environment.api_key;
+  apiURL = 'https://api.spoonacular.com/recipes';
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
