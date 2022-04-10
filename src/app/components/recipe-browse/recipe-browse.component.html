@@ -18,6 +18,7 @@
         <button type="button" class="list-group-item btn btn-secondary h4" (click)="dietVegan()">Vegan</button>
         <button type="button" class="list-group-item btn btn-secondary h4" (click)="dietGlutenFree()">Gluten free</button>
         <button type="button" class="list-group-item btn btn-secondary h4" (click)="dietDairyFree()">Dairy free</button>
+        <!--<button type="button" class="list-group-item btn btn-secondary h4" (click)="filterReset()">Reset filters</button>-->
         <button type="button" class="list-group-item btn btn-outline-success h4" (click)="getAllRecipes()">Give me 50 new random recipes!</button>
     </div>
 </section>
@@ -29,7 +30,7 @@
 
     <!-- Display movies in genre -->
     <div class="d-flex justify-content-evenly">
-      <div class="row">
+      <div *ngIf="!filterActive" class="row">
         <div *ngFor="let recipe of recipes" class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
           <div class="card p-1 m-2 justify-content-center" style="width: 350px">
             <h3 class="text-center h4">{{ recipe.title }}</h3>

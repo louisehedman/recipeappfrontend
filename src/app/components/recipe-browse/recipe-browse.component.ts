@@ -15,6 +15,7 @@ import { Subscription } from 'rxjs';
 export class RecipeBrowseComponent implements OnInit {
   recipes: any[] = [];
   isSignedIn!: boolean;
+  filterActive: boolean = false;
 
 
   constructor(public recipeService: RecipeService, private route: ActivatedRoute, public router: Router, private auth: AuthStateService) { }
@@ -25,6 +26,7 @@ export class RecipeBrowseComponent implements OnInit {
       this.isSignedIn = val;
     });
 
+    //this.filterActive = true;
   } 
 
   getAllRecipes(): void{
@@ -34,7 +36,12 @@ export class RecipeBrowseComponent implements OnInit {
     })
   }
 
+  /*filterReset() {
+    this.filterActive = true;
+  }*/
+
   dietVegan() {
+    //this.filterActive = !this.filterActive;
     this.recipes = [...this.recipes.filter((recipe) => recipe.vegan)];
     console.log(this.recipes);
   }
