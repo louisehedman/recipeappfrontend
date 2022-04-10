@@ -7,6 +7,7 @@ import { RecipeBrowseComponent } from './components/recipe-browse/recipe-browse.
 import { RecipeComponent } from './components/recipe/recipe.component'
 import { RecipeListsComponent} from './components/recipe-lists/recipe-lists.component'
 import { RecipeListComponent } from './components/recipe-list/recipe-list.component'
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component'
 
 const routes: Routes = [
   { path: '', redirectTo: 'recipes', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'recipes', component: RecipeBrowseComponent },
   { path: 'recipe-lists', component: RecipeListsComponent },
   { path: 'recipe-list/:recipeListId', component: RecipeListComponent },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
