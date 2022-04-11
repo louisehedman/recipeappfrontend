@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
     // Key for Spoonacular API
-  api_key: 'a2fb12d2cc514e6298ef23ceeb46b1d0',
+  api_key: '322dfdd7a61b4981822dbd8ebc5fc566'
 };
 
 /*
