@@ -42,7 +42,7 @@
                                         <img src="{{ recipe.img }}" class="img-fluid mb-3" alt="Recipe image">
                                     </td>
                                     <td> {{recipe.title }}</td>
-                                    <td><a routerLink="/recipe/{{recipe.id}}" class="btn btn-success">View</a></td>
+                                    <td><a routerLink="/recipe/{{recipe.recipe_api_id}}" class="btn btn-success">View</a></td>
                                     <td>
                                         <button type="button" (click)="onDeleteRecipe(recipeList.id, recipe.id)" class="btn btn-danger">Delete</button>
                                     </td>
