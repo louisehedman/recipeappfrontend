@@ -12,6 +12,7 @@ import { AuthStateService } from '../../services/auth-state.service';
 
 export class RecipeBrowseComponent implements OnInit {
   recipes: any[] = [];
+  shownRecipes: any[] = [];
   isSignedIn!: boolean;
 
   constructor(public recipeService: RecipeService, private route: ActivatedRoute, public router: Router, private auth: AuthStateService) { }
@@ -28,6 +29,7 @@ export class RecipeBrowseComponent implements OnInit {
   getAllRecipes(): void{
     this.recipeService.getAllRecipes().subscribe((data) => {
       this.recipes = data;
+      this.shownRecipes = data;
       console.log(this.recipes);
     })
   }
@@ -35,19 +37,23 @@ export class RecipeBrowseComponent implements OnInit {
   // filter recipes
 
   dietVegan() {
-    this.recipes = this.recipes.filter((recipe) => recipe.vegan);
+    this.shownRecipes = this.recipes.filter((recipe) => recipe.vegan);
     console.log(this.recipes);
   }
 
   dietGlutenFree() {
-    this.recipes = this.recipes.filter((recipe) => recipe.glutenFree);
+    this.shownRecipes = this.recipes.filter((recipe) => recipe.glutenFree);
   }
 
   dietDairyFree() {
-    this.recipes = this.recipes.filter((recipe) => recipe.dairyFree);
+    this.shownRecipes = this.recipes.filter((recipe) => recipe.dairyFree);
   }
 
   dishType(dishType: any) {
-    this.recipes = this.recipes.filter((recipe) => recipe.dishTypes.includes(dishType));
+    this.shownRecipes = this.recipes.filter((recipe) => recipe.dishTypes.includes(dishType));
+  }
+
+  filterReset() {
+    this.shownRecipes = this.recipes;
   }
 }
