@@ -34,12 +34,14 @@ constructor(public recipeListService: RecipeListService, public recipeService: R
       this.isSignedIn = val;
     });
 
+    // Form for updating list name
     this.updateForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
     })
 
       this.recipeListId = this.route.snapshot.params['recipeListId'];
       
+      // Get all recipes in list
       this.subscription = this.recipeListService.getAllListRecipes(this.recipeListId)
       .subscribe((data: ApiRecipe[]) => {
       this.allListRecipes = data;
@@ -55,6 +57,7 @@ constructor(public recipeListService: RecipeListService, public recipeService: R
     return this.updateForm.controls;
   }
 
+  // update list name
   onUpdate(){
     console.log(this.updateForm.value);
     this.recipeListService.updateRecipeList(this.recipeListId, this.updateForm.value).subscribe((res:any) => {
@@ -63,6 +66,7 @@ constructor(public recipeListService: RecipeListService, public recipeService: R
     })
   }
 
+  // Delete recipe from list and update
   onDeleteRecipe(recipeListId: number, apiRecipeId: any) {
     this.recipeListService.deleteRecipe(recipeListId, apiRecipeId).subscribe((res:any) => {
       console.log('Recipe deleted successfully!');

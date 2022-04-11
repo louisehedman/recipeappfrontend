@@ -9,6 +9,7 @@
     </div>
 </section>
 
+<!-- buttons for filtering recipes -->
 <section class="container my-5">
     <div class="list-group d-flex justify-content-around">
         <h2 class="list-group-item text-center h3">Filter recipes</h2>
@@ -28,7 +29,7 @@
       <h2 class="display-1">Recipes</h2>
     </div>
 
-    <!-- Display movies in genre -->
+    <!-- Display recipes -->
     <div class="d-flex justify-content-evenly">
       <div *ngIf="!filterActive" class="row">
         <div *ngFor="let recipe of recipes" class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">

@@ -42,6 +42,7 @@ export class RecipeComponent implements OnInit {
       this.isSignedIn = val;
     })
 
+    // input
     this.apiRecipe = {
       id: null,
       recipe_api_id: this.data.id,
@@ -64,6 +65,7 @@ export class RecipeComponent implements OnInit {
         this.recipeList = data;
       });
 
+      // get a users all recipe lists to choose from
       this.subscription = this.recipeListService.getAllRecipeLists()
     .subscribe((data: RecipeList[]) => {
       this.allRecipeLists = data;
@@ -71,10 +73,10 @@ export class RecipeComponent implements OnInit {
     });
   }
 
+  // add recipe to a list 
   onAddToList(recipeListId: number, apiRecipe: any) {
     console.log(this.recipeListId, this.apiRecipe, "input param: ", recipeListId);
     this.recipeListService.addRecipe(recipeListId, apiRecipe).subscribe((res:any) => { 
-      console.log('Recipe added successfully!');
       console.log('res: ', res);
     })
   }

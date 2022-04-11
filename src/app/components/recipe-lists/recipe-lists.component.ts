@@ -41,6 +41,7 @@ export class RecipeListsComponent implements OnInit {
     return this.createForm.controls;
   }
 
+  // Create new list 
   onSubmit(){
     console.log(this.createForm.value);
     this.recipeListService.createRecipeList(this.createForm.value).subscribe((res:any) => {

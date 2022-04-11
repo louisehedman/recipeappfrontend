@@ -29,6 +29,7 @@ export class RecipeBrowseComponent implements OnInit {
     //this.filterActive = true;
   } 
 
+  // get 50 random recipes
   getAllRecipes(): void{
     this.recipeService.getAllRecipes().subscribe((data) => {
       this.recipes = data;
@@ -40,6 +41,7 @@ export class RecipeBrowseComponent implements OnInit {
     this.filterActive = true;
   }*/
 
+  // filter recipes
   dietVegan() {
     //this.filterActive = !this.filterActive;
     this.recipes = [...this.recipes.filter((recipe) => recipe.vegan)];
