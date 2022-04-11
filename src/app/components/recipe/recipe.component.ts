@@ -1,15 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RecipeService} from '../../services/recipe.service';
 import { RecipeListService} from '../../services/recipe-list.service';
-import { Router, ActivatedRoute, ParamMap} from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Recipe, ExtendedIngredient } from '../../models/recipe';
+import { Recipe } from '../../models/recipe';
 import { RecipeList } from '../../models/recipeList';
 import { ApiRecipe } from '../../models/apiRecipe';
 import { AuthStateService } from '../../services/auth-state.service';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-
-
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 
 
@@ -21,11 +19,9 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 export class RecipeComponent implements OnInit {
 
   @Input() data!: Recipe;
-  private subscriptions = new Subscription();
   addRecipeForm!: FormGroup;
   apiRecipe!: ApiRecipe;
   recipe!: Recipe;
-  extendedIngredients: ExtendedIngredient[] = [];
   recipes: any[] = [];
   isSignedIn!: boolean;
   allRecipeLists: RecipeList[] = [];
@@ -67,16 +63,17 @@ export class RecipeComponent implements OnInit {
 
       // get a users all recipe lists to choose from
       this.subscription = this.recipeListService.getAllRecipeLists()
-    .subscribe((data: RecipeList[]) => {
-      this.allRecipeLists = data;
-      console.log(this.allRecipeLists);
-    });
+      .subscribe((data: RecipeList[]) => {
+        this.allRecipeLists = data;
+        console.log(this.allRecipeLists);
+      });
   }
 
   // add recipe to a list 
   onAddToList(recipeListId: number, apiRecipe: any) {
     console.log(this.recipeListId, this.apiRecipe, "input param: ", recipeListId);
     this.recipeListService.addRecipe(recipeListId, apiRecipe).subscribe((res:any) => { 
+      alert(res.message);
       console.log('res: ', res);
     })
   }

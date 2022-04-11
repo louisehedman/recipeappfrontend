@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { RecipeListService } from 'src/app/services/recipe-list.service';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { RecipeList } from '../../models/recipeList';
 import { Recipe } from '../../models/recipe';
 import { ApiRecipe, ApiRecipes } from '../../models/apiRecipe';
@@ -17,7 +17,6 @@ import { Subscription } from 'rxjs';
 export class RecipeListComponent implements OnInit {
 recipeListId!: number;
 apiRecipeId!: number;
-recipesId: any = [];
 recipeList!: RecipeList;
 allListRecipes!: ApiRecipes['recipes'];
 apiRecipe!: ApiRecipe[];

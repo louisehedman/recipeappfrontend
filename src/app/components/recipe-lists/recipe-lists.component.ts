@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeListService} from '../../services/recipe-list.service';
-import { Router, ActivatedRoute, ParamMap} from '@angular/router';
-import { AuthStateService} from '../../services/auth-state.service';
+import { RecipeListService } from '../../services/recipe-list.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { RecipeList } from '../../models/recipeList';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
