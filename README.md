@@ -1,8 +1,14 @@
-# RecipeAppFe
+# Random Recipe App
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.
 
-This project is a school assignment to learn Angular and how to work with API:s, as a recipe app. This is the frontend part of the application, a backend part is made with Laravel. The API used for this project is the Spoonacular API, and also a RESTful API created in Laravel which handle users and their recipe lists. A not signed in user can browse recipes rendered as random recipes, and filter the result for meal type as starters, main courses and desserts, and diet preferences as vegan, dairy free and gluten free. Logged in users can save their favourite recipes in lists. The site is live at randomrecipeapp.netlify.app. 
+## About
+
+This project is a school assignment to learn Angular and how to work with API:s, as a recipe app. This is the frontend part of the application, a backend part is made with Laravel. The API used for this project is the Spoonacular API, and also a RESTful API created in Laravel which handle users and their recipe lists. 
+
+In this application a not signed in user can browse recipes rendered as random recipes, and filter the result for meal type as starters, main courses and desserts, and diet preferences as vegan, dairy free and gluten free. Logged in users can save their favourite recipes in lists. 
+
+The site is live at randomrecipeapp.netlify.app. 
 
 ## Development server
 
