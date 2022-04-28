@@ -8,7 +8,7 @@ This project is a school assignment to learn Angular and how to work with API:s,
 
 In this application a not signed in user can browse recipes rendered as random recipes, and filter the result for meal type as starters, main courses and desserts, and diet preferences as vegan, dairy free and gluten free. Logged in users can save their favourite recipes in lists. 
 
-The site is live at randomrecipeapp.netlify.app. 
+The site is live at [https://randomrecipeapp.netlify.app](https://randomrecipeapp.netlify.app). 
 
 ## Development server
 
