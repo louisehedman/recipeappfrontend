@@ -8,7 +8,19 @@ This project is a school assignment to learn Angular and how to work with API:s,
 
 In this application a not signed in user can browse recipes rendered as random recipes, and filter the result for meal type as starters, main courses and desserts, and diet preferences as vegan, dairy free and gluten free. Logged in users can save their favourite recipes in lists. 
 
-The site is live at [https://randomrecipeapp.netlify.app](https://randomrecipeapp.netlify.app). 
+## How to get started
+
+To open the project in your code editor clone it and then run `npm install` to install dependencies.
+
+You also need to get your own API key for the Spoonacular API at [https://spoonacular.com/food-api](https://spoonacular.com/food-api) and add it as api_key in environment.ts. 
+
+In the app section in src folder you find the components, models and services. 
+
+To open the application in your browser and get it running on localhost type `npm start` in terminal. 
+
+The site is live at [https://randomrecipeapp.netlify.app](https://randomrecipeapp.netlify.app).
+
+You find the backend repository here: [https://github.com/louisehedman/recipeappbackend](https://github.com/louisehedman/recipeappbackend)
 
 ## Development server
 
