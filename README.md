@@ -16,7 +16,7 @@ You also need to get your own API key for the Spoonacular API at [https://spoona
 
 In the app section in src folder you find the components, models and services. 
 
-To open the application in your browser and get it running on localhost type `npm start` in terminal. 
+To open the application in your browser and get it running on localhost type `ng serve` in terminal. 
 
 The site is live at [https://randomrecipeapp.netlify.app](https://randomrecipeapp.netlify.app).
 
